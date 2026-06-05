@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalifa Abdelfattah | Python Expert & Developer</title>
+    <meta name="description"
+        content="Portfolio of Khalifa Abdelfattah, expert Python developer specializing in Web and Desktop applications with PyInstaller and SQLite.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Cairo:wght@400;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .toggle-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .toggle-btn:hover {
+            border-color: var(--primary-accent);
+        }
+
+        [data-lang="ar"] {
+            display: none;
+        }
+
+        html[lang="ar"] [data-lang="en"] {
+            display: none;
+        }
+
+        html[lang="ar"] [data-lang="ar"] {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav>
+        <a href="#" class="logo">Khalifa Abdelfattah</a>
+        <ul class="nav-links">
+            <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+            <li><a href="#about" data-en="About" data-ar="من أنا">About</a></li>
+            <li><a href="#programs" data-en="Programs" data-ar="برامجي للبيع">Programs</a></li>
+            <li><a href="#creations" data-en="Creations" data-ar="إبداعاتي">Creations</a></li>
+            <li><a href="#ai-tools" data-en="AI Tools" data-ar="أدوات الذكاء">AI Tools</a></li>
+            <li><a href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a></li>
+        </ul>
+        <div style="display: flex; gap: 0.8rem; align-items: center;">
+            <button id="theme-toggle" class="toggle-btn" title="Toggle Theme">
+                <i data-lucide="moon" id="theme-icon"></i>
+            </button>
+            <button id="lang-toggle" class="toggle-btn" title="Switch Language">
+                <span id="lang-text">AR</span>
+            </button>
+            <div style="display: flex; gap: 0.5rem; align-items: center;" class="nav-social">
+                <a href="https://www.facebook.com/share/1DuGe2AHxi/" target="_blank"
+                    style="color: var(--text-primary); transition: var(--transition);">
+                    <i data-lucide="facebook"></i>
+                </a>
+                <a href="https://wa.me/201128037715" target="_blank" class="btn btn-primary"
+                    style="padding: 0.6rem 1.5rem;" data-en="Hire Me" data-ar="وظفني">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-en="Hi, I'm <span>Khalifa Abdelfattah</span>" data-ar="مرحباً، أنا <span>خليفة عبد الفتاح</span>">
+                Hi, I'm <span>Khalifa Abdelfattah</span>
+            </h1>
+            <p data-en="A passionate Python developer crafting powerful Web and Desktop applications. Expert in PyInstaller and SQLite database integration."
+                data-ar="مطور بايثون شغوف، أقوم ببناء تطبيقات ويب وسطح مكتب قوية. خبير في PyInstaller وتكامل قواعد بيانات SQLite.">
+                A passionate Python developer crafting powerful Web and Desktop applications. Expert in PyInstaller and
+                SQLite database integration.
+            </p>
+            <div class="hero-btns">
+                <a href="#programs" class="btn btn-primary">
+                    <i data-lucide="shopping-bag"></i> <span data-en="View Programs" data-ar="عرض البرامج">View
+                        Programs</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="profile-container">
+                <img src="profile-enhanced.jpg" alt="Khalifa Abdelfattah">
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title"><span data-en="My <span>Expertise</span>" data-ar="مجالات <span>خبرتي</span>">My
+                <span>Expertise</span></span></h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <i data-lucide="code-2" style="color: var(--primary-accent); width: 40px; height: 40px;"></i>
+                <h3 data-en="Python Development" data-ar="تطوير بايثون">Python Development</h3>
+                <p data-en="Building robust logic and backend systems using the latest Python standards."
+                    data-ar="بناء منطق برمجي وأنظمة خلفية قوية باستخدام أحدث معايير لغة بايثون.">
+                    Building robust logic and backend systems using the latest Python standards.
+                </p>
+                <div class="program-tag" data-en="Advanced" data-ar="متقدم">Advanced</div>
+            </div>
+            <div class="program-card">
+                <i data-lucide="monitor" style="color: var(--primary-accent); width: 40px; height: 40px;"></i>
+                <h3 data-en="Desktop Apps" data-ar="تطبيقات سطح المكتب">Desktop Apps</h3>
+                <p data-en="Creating standalone Windows executables (.rar) using PyInstaller for easy distribution."
+                    data-ar="تحويل البرمجيات إلى ملفات تنفيذية ويندوز (.rar) باستخدام PyInstaller لسهولة التوزيع.">
+                    Creating standalone Windows executables (.rar) using PyInstaller for easy distribution.
+                </p>
+                <div class="program-tag" data-en="PyInstaller" data-ar="PyInstaller">PyInstaller</div>
+            </div>
+            <div class="program-card">
+                <i data-lucide="database" style="color: var(--primary-accent); width: 40px; height: 40px;"></i>
+                <h3 data-en="Database Design" data-ar="تصميم قواعد البيانات">Database Design</h3>
+                <p data-en="Efficient data management and storage solutions using SQLite for local applications."
+                    data-ar="حلول إدارة وتخزين بيانات فعالة باستخدام SQLite للتطبيقات المحلية.">
+                    Efficient data management and storage solutions using SQLite for local applications.
+                </p>
+                <div class="program-tag" data-en="SQLite" data-ar="SQLite">SQLite</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <h2 class="section-title"><span data-en="Available <span>Programs</span>"
+                data-ar="البرامج <span>المتاحة</span>">Available <span>Programs</span></span></h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <i data-lucide="package" style="color: var(--secondary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="Zelzal Warehouse" data-ar="مستودع زلزال">Zelzal Warehouse</h3>
+                <p data-en="A comprehensive warehouse management system with automated inventory tracking."
+                    data-ar="نظام شامل لإدارة المستودعات مع تتبع آلي للمخزون.">
+                    A comprehensive warehouse management system with automated inventory tracking.
+                </p>
+                <a href="https://wa.me/201128037715" class="btn btn-primary"
+                    style="width: 100%; justify-content: center;" data-en="Order Now" data-ar="اطلب الآن">
+                    Order Now
+                </a>
+            </div>
+            <div class="program-card">
+                <i data-lucide="shield-check" style="color: var(--secondary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="Keygen Tool" data-ar="أداة توليد الكود">Keygen Tool</h3>
+                <p data-en="Secure license generation and management tool for software distribution."
+                    data-ar="أداة آمنة لتوليد وإدارة تراخيص البرمجيات لتوزيعها بشكل محمي.">
+                    Secure license generation and management tool for software distribution.
+                </p>
+                <a href="https://wa.me/201128037715" class="btn btn-primary"
+                    style="width: 100%; justify-content: center;" data-en="Order Now" data-ar="اطلب الآن">
+                    Order Now
+                </a>
+            </div>
+            <div class="program-card">
+                <i data-lucide="layout" style="color: var(--secondary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="Custom CRM" data-ar="نظام CRM مخصص">Custom CRM</h3>
+                <p data-en="Tailor-made Customer Relationship Management software built for specific business needs."
+                    data-ar="برنامج إدارة علاقات العملاء مصمم خصيصاً لاحتياجات عملك المحددة.">
+                    Tailor-made Customer Relationship Management software built for specific business needs.
+                </p>
+                <a href="https://wa.me/201128037715" class="btn btn-primary"
+                    style="width: 100%; justify-content: center;" data-en="Order Now" data-ar="اطلب الآن">
+                    Order Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="creations" style="background: rgba(0,0,0,0.05);">
+        <h2 class="section-title"><span data-en="My <span>Windows Apps</span>"
+                data-ar="تطبيقات <span>الويندوز</span>">My <span>Windows Apps</span></span></h2>
+        <div class="programs-grid">
+            <!-- Creation 1 -->
+            <div class="program-card">
+                <i data-lucide="rocket" style="color: var(--primary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="Window Cleaner Professional" data-ar="مسرع النظام النسخة الاحترافية">Window Cleaner Professional</h3>
+                <p data-en="Advanced tool to clean and optimize Windows performance to the maximum."
+                    data-ar="أداة متقدمة لتنظيف وتحسين أداء الويندوز لأقصى حد.">
+                    Advanced tool to clean and optimize Windows performance to the maximum.
+                </p>
+                <a href="downloads/Window%20Cleaner%20Professianal.rar" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; background: var(--secondary-accent);">
+                    <i data-lucide="download"></i> <span data-en="Download RAR" data-ar="تحميل البرنامج">Download
+                        RAR</span>
+                </a>
+            </div>
+            <!-- Creation 2 -->
+            <div class="program-card">
+                <i data-lucide="cpu" style="color: var(--primary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="Windows Cleaner Tool" data-ar="مسرع النظام">Windows Cleaner Tool</h3>
+                <p data-en="Powerful tool to clean temporary files and optimize Windows performance."
+                    data-ar="أداة قوية لتنظيف الملفات المؤقتة وتحسين أداء الويندوز.">
+                    Powerful tool to clean temporary files and optimize Windows performance.
+                </p>
+                <a href="downloads/WindowsCleanerTool.rar" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; background: var(--secondary-accent);">
+                    <i data-lucide="download"></i> <span data-en="Download RAR" data-ar="تحميل البرنامج">Download
+                        RAR</span>
+                </a>
+            </div>
+            <!-- Creation 3 -->
+            <div class="program-card">
+                <i data-lucide="usb" style="color: var(--primary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="USB Flash Repair" data-ar="إصلاح الفلاش ميموري">USB Flash Repair</h3>
+                <p data-en="A specialized tool to fix common USB drive errors and format corrupted flash memories."
+                    data-ar="أداة متخصصة لإصلاح أخطاء الفلاشات الشائعة وتهيئة الذاكرة التالفة.">
+                    A specialized tool to fix common USB drive errors and format corrupted flash memories.
+                </p>
+                <a href="downloads/USBFlashRepair.rar" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; background: var(--secondary-accent);">
+                    <i data-lucide="download"></i> <span data-en="Download RAR" data-ar="تحميل البرنامج">Download
+                        EXE</span>
+                </a>
+            </div>
+            <!-- Creation 4 -->
+            <div class="program-card">
+                <i data-lucide="shield-check" style="color: var(--primary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="USB Flash Antivirus" data-ar="حماية الفلاش ميموري">USB Flash Antivirus</h3>
+                <p data-en="Real-time protection for your USB drives to prevent virus infections and malware spread."
+                    data-ar="حماية فورية للفلاشات لمنع انتقال الفيروسات والبرمجيات الخبيثة.">
+                    Real-time protection for your USB drives to prevent virus infections and malware spread.
+                </p>
+                <a href="downloads/USBFlashAntivirus.rar" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; background: var(--secondary-accent);">
+                    <i data-lucide="download"></i> <span data-en="Download RAR" data-ar="تحميل البرنامج">Download
+                        EXE</span>
+                </a>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 3rem; color: var(--text-secondary);"
+            data-en="* All apps are built using Python & PyInstaller."
+            data-ar="* جميع التطبيقات مبرمجة بلغة بايثون و PyInstaller.">
+            * All apps are built using Python & PyInstaller.
+        </p>
+    </section>
+    <section id="ai-tools" style="background: rgba(129, 140, 248, 0.03);">
+        <h2 class="section-title"><span data-en="AI <span>Powered Tools</span>"
+                data-ar="أدوات <span>الذكاء الاصطناعي</span>">AI <span>Powered Tools</span></span></h2>
+        <div class="programs-grid">
+            <!-- AI Tool 1 -->
+            <div class="program-card">
+                <i data-lucide="brain-circuit" style="color: var(--primary-accent); width: 30px; height: 30px;"></i>
+                <h3 data-en="AI Pro Translator" data-ar="مترجم الذكاء الاصطناعي">AI Pro Translator</h3>
+                <p data-en="Professional translation tool powered by AI for accurate and fast multi-language support."
+                    data-ar="أداة ترجمة احترافية مدعومة بالذكاء الاصطناعي لدعم لغات متعددة بدقة وسرعة.">
+                    Professional translation tool powered by AI for accurate and fast multi-language support.
+                </p>
+                <div style="display: flex; gap: 0.5rem;">
+                    <a href="translator/index.html" class="btn btn-primary"
+                        style="flex: 1; justify-content: center; background: var(--primary-accent);">
+                        <i data-lucide="external-link"></i> <span data-en="Open Tool" data-ar="فتح الأداة">Open
+                            Tool</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center;">
+        <h2 class="section-title"><span data-en="Get In <span>Touch</span>" data-ar="تواصل <span>معي</span>">Get In
+                <span>Touch</span></span></h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;"
+            data-en="Have a project in mind or want to buy one of my programs? Contact me directly via WhatsApp for quick support."
+            data-ar="لديك مشروع في بالك أو تريد شراء أحد برامجي؟ تواصل معي مباشرة عبر الواتساب للحصول على دعم سريع.">
+            Have a project in mind or want to buy one of my programs? Contact me directly via WhatsApp for quick
+            support.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="https://wa.me/201128037715" class="btn btn-primary"
+                style="background: #25d366; font-size: 1.2rem; padding: 1.2rem 3rem;">
+                <i data-lucide="message-circle"></i> <span data-en="Chat on WhatsApp" data-ar="تحدث عبر واتساب">Chat on
+                    WhatsApp</span>
+            </a>
+            <a href="https://www.facebook.com/share/1DuGe2AHxi/" class="btn btn-primary"
+                style="background: #1877f2; font-size: 1.2rem; padding: 1.2rem 3rem;">
+                <i data-lucide="facebook"></i> <span data-en="Facebook Profile" data-ar="حساب فيسبوك">Facebook
+                    Profile</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 1rem;">
+            <a href="https://www.facebook.com/share/1DuGe2AHxi/" target="_blank"
+                style="color: var(--text-secondary); margin: 0 10px; transition: var(--transition);">
+                <i data-lucide="facebook" style="width: 20px;"></i>
+            </a>
+        </div>
+        <p data-en="&copy; 2026 Khalifa Abdelfattah. Built with Passion & Python."
+            data-ar="&copy; 2026 خليفة عبد الفتاح. صُنع بكل شغف وبلغة بايثون.">
+            &copy; 2026 Khalifa Abdelfattah. Built with Passion & Python.
+        </p>
+    </footer>
+
+    <a href="https://wa.me/201128037715" class="whatsapp-float" target="_blank">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
