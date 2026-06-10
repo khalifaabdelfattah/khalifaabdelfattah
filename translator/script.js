@@ -1,6 +1,7 @@
 // AI Text Translator - JavaScript (API Powered)
 
 const translateBtn = document.getElementById('translateBtn');
+const translateBtnText = document.getElementById('translateBtnText');
 const inputText = document.getElementById('inputText');
 const outputText = document.getElementById('outputText');
 const sourceLang = document.getElementById('sourceLang');
@@ -12,6 +13,8 @@ const clearBtn = document.getElementById('clearBtn');
 const speakBtn = document.getElementById('speakBtn');
 const charCount = document.getElementById('charCount');
 const themeToggle = document.getElementById('themeToggle');
+const langToggle = document.getElementById('langToggle');
+const devTagText = document.getElementById('devTagText');
 
 // Dark Mode Toggle Logic
 const savedTheme = localStorage.getItem('theme');
@@ -26,6 +29,98 @@ themeToggle.addEventListener('click', () => {
     themeToggle.textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
+
+// UI Translations
+const uiTranslations = {
+    ar: {
+        pageTitle: "Smart Translator | المترجم الذكي",
+        devTag: 'تم البرمجة بواسطة <span class="dev-name"><Kbd>Khalifa Abd ELFattah</Kbd></span>',
+        themeToggleTitle: "تبديل الوضع",
+        clearBtn: "مسح المحتوى",
+        langToggle: "English",
+        langToggleTitle: "تغيير لغة الواجهة",
+        sourceLangOpts: { en: "الإنجليزية", ar: "العربية", fr: "الفرنسية", de: "الألمانية", es: "الإسبانية", ko: "الكورية" },
+        targetLangOpts: { en: "الإنجليزية", ar: "العربية", fr: "الفرنسية", de: "الألمانية", es: "الإسبانية", ko: "الكورية" },
+        inputTextPlaceholder: "أدخل النص هنا...",
+        swapLangsTitle: "تبديل",
+        speakBtnTitle: "استماع",
+        copyBtnTitle: "نسخ",
+        outputTextPlaceholder: "الترجمة...",
+        translateBtnText: "ترجم الآن",
+        translatingBtnText: "جاري الترجمة...",
+        translatingPlaceholder: "جاري الترجمة...",
+        translatedPlaceholder: "ستظهر الترجمة هنا...",
+        emptyInputMsg: "الرجاء إدخال نص للترجمة...",
+        errorMsg: "حدث خطأ في الجودة. حاول تحديد اللغة يدوياً بدلاً من الكشف التلقائي."
+    },
+    en: {
+        pageTitle: "Smart Translator | المترجم الذكي",
+        devTag: 'Programmed by <span class="dev-name"><Kbd>Khalifa Abd ELFattah</Kbd></span>',
+        themeToggleTitle: "Toggle Theme",
+        clearBtn: "Clear Content",
+        langToggle: "العربية",
+        langToggleTitle: "Change Interface Language",
+        sourceLangOpts: { en: "English", ar: "Arabic", fr: "French", de: "German", es: "Spanish", ko: "Korean" },
+        targetLangOpts: { en: "English", ar: "Arabic", fr: "French", de: "German", es: "Spanish", ko: "Korean" },
+        inputTextPlaceholder: "Enter text here...",
+        swapLangsTitle: "Swap",
+        speakBtnTitle: "Listen",
+        copyBtnTitle: "Copy",
+        outputTextPlaceholder: "Translation...",
+        translateBtnText: "Translate Now",
+        translatingBtnText: "Translating...",
+        translatingPlaceholder: "Translating...",
+        translatedPlaceholder: "Translation will appear here...",
+        emptyInputMsg: "Please enter text to translate...",
+        errorMsg: "A quality error occurred. Try selecting the language manually instead of auto-detect."
+    }
+};
+
+let currentUiLang = 'ar';
+
+function updateUiLanguage() {
+    const t = uiTranslations[currentUiLang];
+    
+    document.title = t.pageTitle;
+    document.documentElement.lang = currentUiLang;
+    document.documentElement.dir = currentUiLang === 'ar' ? 'rtl' : 'ltr';
+    
+    devTagText.innerHTML = t.devTag;
+    themeToggle.title = t.themeToggleTitle;
+    clearBtn.textContent = t.clearBtn;
+    langToggle.textContent = t.langToggle;
+    langToggle.title = t.langToggleTitle;
+    
+    inputText.placeholder = t.inputTextPlaceholder;
+    swapLangs.title = t.swapLangsTitle;
+    speakBtn.title = t.speakBtnTitle;
+    copyBtn.title = t.copyBtnTitle;
+    outputText.placeholder = t.outputTextPlaceholder;
+    translateBtnText.textContent = t.translateBtnText;
+    
+    Array.from(sourceLang.options).forEach(opt => {
+        opt.textContent = t.sourceLangOpts[opt.value] || opt.textContent;
+    });
+    
+    Array.from(targetLang.options).forEach(opt => {
+        opt.textContent = t.targetLangOpts[opt.value] || opt.textContent;
+    });
+    
+    // Update local storage
+    localStorage.setItem('uiLang', currentUiLang);
+}
+
+langToggle.addEventListener('click', () => {
+    currentUiLang = currentUiLang === 'ar' ? 'en' : 'ar';
+    updateUiLanguage();
+});
+
+// Load saved language
+const savedUiLang = localStorage.getItem('uiLang');
+if (savedUiLang && savedUiLang !== currentUiLang) {
+    currentUiLang = savedUiLang;
+    updateUiLanguage();
+}
 
 // Update char count
 inputText.addEventListener('input', () => {
@@ -94,9 +189,10 @@ inputText.addEventListener('keydown', (e) => {
 });
 
 async function translate() {
+    const t = uiTranslations[currentUiLang];
     const text = inputText.value.trim();
     if (!text) {
-        outputText.value = 'الرجاء إدخال نص للترجمة...';
+        outputText.value = t.emptyInputMsg;
         return;
     }
 
@@ -109,7 +205,7 @@ async function translate() {
     }
 
     showLoading(true);
-    outputText.placeholder = 'جاري الترجمة...';
+    outputText.placeholder = t.translatingPlaceholder;
     outputText.value = '';
 
     try {
@@ -128,14 +224,14 @@ async function translate() {
             let result = data[0].map(item => item[0]).join('');
             outputText.value = result;
         } else {
-            throw new Error('فشل في العثور على ترجمة دقيقة.');
+            throw new Error('Translation failed.');
         }
     } catch (error) {
         console.error('Translation error:', error);
-        outputText.value = 'حدث خطأ في الجودة. حاول تحديد اللغة يدوياً بدلاً من الكشف التلقائي.';
+        outputText.value = t.errorMsg;
     } finally {
         showLoading(false);
-        outputText.placeholder = 'ستظهر الترجمة هنا...';
+        outputText.placeholder = t.translatedPlaceholder;
     }
 }
 
@@ -152,9 +248,10 @@ function detectLangLocally(text) {
 }
 
 function showLoading(show) {
+    const t = uiTranslations[currentUiLang];
     loading.style.display = show ? 'flex' : 'none';
     translateBtn.disabled = show;
-    translateBtn.textContent = show ? 'جاري الترجمة...' : 'ترجم الآن';
+    translateBtnText.textContent = show ? t.translatingBtnText : t.translateBtnText;
 }
 
 function decodeHTMLEntities(text) {
